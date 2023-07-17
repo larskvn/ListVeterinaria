@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+
+<html  xmlns:th="http://www.thymeleaf.org">
+    <head>
+        <title>TODO supply a title</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-KK94CHFLLe+nY2dmCWGMq91rCGa5gtU4mk92HdvYe+M/SXH301p5ILy+dN9+nJOZ" crossorigin="anonymous">
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ENjdO4Dr2bkBIFxQpeoTz1HIcje39Wm4jDKdf19U8gI4ddQ3GYNS7NTKfAdVQSZe" crossorigin="anonymous"></script>
+    </head>
+    <body>
+
+        <header th:insert="~{fragments/menu :: menu-principal}"></header>
+        <br>
+
+        <a href="/form" class="btn btn-primary" tabindex="-1" role="button">Agregar</a>
+
+        <table class="table align-middle mb-0 bg-white">
+    <thead class="bg-light">
+        <tr>
+            <th>Nombre</th>
+            <th>Descripcion</th>
+            <th>Horario</th>
+            <th>Ubicacion</th>
+            <th>Accion</th>
+            
+        </tr>
+    </thead>
+    <tbody>
+        <tr th:each="veterinaria : ${listar}">
+            <td>
+                <div class="d-flex align-items-center">
+                    <img th:src="${veterinaria.logo}" alt="" style="width: 45px; height: 45px" class="rounded-circle">
+                    <div class="ms-3">
+                        <p class="fw-bold mb-1" th:text="${veterinaria.nombre}"></p>
+                    </div>
+                </div>
+            </td>
+            <td>
+                <p class="text-muted mb-0" th:text="${veterinaria.descripcion}"></p>
+            </td>
+            <td>
+                <p class="text-muted mb-0" th:text="${veterinaria.horario}"></p>
+            </td>
+            <td>
+                <div class="card-footer bg-transparent border-success" th:text="${veterinaria.ubicacion}"></div>
+            </td>
+            <td>
+                <a type="button" class="primary"></a>
+            </td>
+        </tr>
+    </tbody>
+</table>
+
+
+        <!--<div class="container">
+            <div class="d-flex justify-content-between mb-1">
+                <div class="col-md-8">
+                    <div class="row row-cols-1 row-cols-md-1">
+                        <div th:each="veterinaria : ${listar}" class="col mb-4">
+                            <div class="card" style="max-width: 540px;">
+                                <div  class="row g-0">
+                                    <div class="col-md-4">
+                                        <img  th:src="${veterinaria.logo}" class="img-fluid mx-auto d-block" >
+                                    </div>
+                                    <div class="col-md-8">
+                                        <div class="card-body">
+                                            <h5 th:text="${veterinaria.nombre}" class="card-title">Card title</h5>
+                                            <p th:text="${veterinaria.descripcion}" class="card-text"></p>
+                                            <p  class="card-text"><small th:text="${veterinaria.horario}"  class="text-body-secondary"></small></p>
+                                            <samp th:if="${veterinaria.destacado == 1 ? 'si' : 'no'}" class="badge bg-success">Si</samp>
+                                            <samp th:unless="${veterinaria.destacado == 1 ? 'si' : 'no'}" class="badge bg-danger">no</samp>
+                                        </div>
+                                        <div th:text="${veterinaria.ubicacion}" class="card-footer bg-transparent border-success"></div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>-->
+    </body>
+</html>
